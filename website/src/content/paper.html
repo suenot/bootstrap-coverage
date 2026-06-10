@@ -5,32 +5,31 @@ advice circulating in practitioner writing is appealingly simple:
 resample the backtest’s daily returns, or its individual trades, with
 replacement; recompute the statistic on each resample; and read the
 interval off the quantiles of the bootstrap distribution <span
-class="citation" data-cites="aronson2006evidence">(Aronson
-2006)</span>.<a href="#fn1" class="footnote-ref" id="fnref1"
+class="citation" data-cites="aronson2006evidence">[1]</span>.<a
+href="#fn1" class="footnote-ref" id="fnref1"
 role="doc-noteref"><sup>1</sup></a> The procedure inherits the prestige
 of the bootstrap <span class="citation"
-data-cites="efron1979bootstrap">(Efron 1979)</span> while quietly
-discarding its central assumption: resampling individual observations is
-justified for independent data, and strategy PnL streams are not
-independent. Overlapping positions induce autocorrelation; volatility
-clusters <span class="citation"
-data-cites="bollerslev1986generalized">(Bollerslev 1986)</span> and
+data-cites="efron1979bootstrap">[4]</span> while quietly discarding its
+central assumption: resampling individual observations is justified for
+independent data, and strategy PnL streams are not independent.
+Overlapping positions induce autocorrelation; volatility clusters <span
+class="citation" data-cites="bollerslev1986generalized">[3]</span> and
 switches regimes <span class="citation"
-data-cites="hamilton1989new">(Hamilton 1989)</span>. A bootstrap that
-destroys this dependence understates the sampling variability of
-mean-like statistics under positive dependence, and the intervals it
-produces may cover the truth far less often than advertised.</p>
+data-cites="hamilton1989new">[7]</span>. A bootstrap that destroys this
+dependence understates the sampling variability of mean-like statistics
+under positive dependence, and the intervals it produces may cover the
+truth far less often than advertised.</p>
 <p>How much less often, for the statistics practitioners actually
 report? The question is empirical and, to our knowledge, unanswered. The
 block-bootstrap literature (Section <a href="#sec:related"
 data-reference-type="ref" data-reference="sec:related">2</a>) proved
 decades ago that dependence requires resampling blocks, and <span
-class="citation" data-cites="ledoit2008robust">Ledoit and Wolf
-(2008)</span> showed that classical <em>two-sample</em> Sharpe tests
-over-reject under dependence; but the one-sample <em>coverage</em> of
-the intervals attached to a single backtest’s Sharpe ratio and maximum
-drawdown—across the iid, trade-level, block, and analytic methods a
-practitioner might pick—has not been measured under a known truth.</p>
+class="citation" data-cites="ledoit2008robust">[12]</span> showed that
+classical <em>two-sample</em> Sharpe tests over-reject under dependence;
+but the one-sample <em>coverage</em> of the intervals attached to a
+single backtest’s Sharpe ratio and maximum drawdown—across the iid,
+trade-level, block, and analytic methods a practitioner might pick—has
+not been measured under a known truth.</p>
 <p>We measure it. Five families of daily-return processes are
 constructed so that the population annualized Sharpe ratio is known
 <em>exactly</em> (the truth is an algebraic identity of the sampled
@@ -107,126 +106,122 @@ data-reference="sec:mdd">6.5</a>).</p></li>
 <h1 id="sec:related">Related work</h1>
 <h4 id="bootstrap-foundations.">Bootstrap foundations.</h4>
 <p>The bootstrap was introduced by <span class="citation"
-data-cites="efron1979bootstrap">Efron (1979)</span> as a general-purpose
-device for estimating the sampling distribution of a statistic by
-resampling observations with replacement; the canonical treatment of
-bootstrap confidence intervals— percentile, basic, studentized, and
-BCa—is <span class="citation" data-cites="efron1993introduction">Efron
-and Tibshirani (1993)</span>. The validity of these intervals rests on
-the assumption that the data are independent and identically
-distributed: resampling individual observations destroys any temporal
-ordering, so for dependent data the bootstrap distribution of a
-mean-like or ratio-like statistic systematically understates (under
-positive dependence) the true sampling variability. This failure mode is
-precisely the one at issue when financial returns or trade PnLs are
-resampled.</p>
+data-cites="efron1979bootstrap">[4]</span> as a general-purpose device
+for estimating the sampling distribution of a statistic by resampling
+observations with replacement; the canonical treatment of bootstrap
+confidence intervals— percentile, basic, studentized, and BCa—is <span
+class="citation" data-cites="efron1993introduction">[5]</span>. The
+validity of these intervals rests on the assumption that the data are
+independent and identically distributed: resampling individual
+observations destroys any temporal ordering, so for dependent data the
+bootstrap distribution of a mean-like or ratio-like statistic
+systematically understates (under positive dependence) the true sampling
+variability. This failure mode is precisely the one at issue when
+financial returns or trade PnLs are resampled.</p>
 <h4 id="bootstraps-for-dependent-data.">Bootstraps for dependent
 data.</h4>
 <p>The block-bootstrap literature repairs this by resampling contiguous
 blocks rather than single observations. <span class="citation"
-data-cites="kunsch1989jackknife">Künsch (1989)</span> introduced the
-moving block bootstrap and established its consistency for general
-stationary observations; <span class="citation"
-data-cites="politis1992circular">Politis and Romano (1992)</span>
-proposed the circular block bootstrap (CBB), which wraps the sample on a
-circle to eliminate edge effects; and <span class="citation"
-data-cites="politis1994stationary">Politis and Romano (1994)</span>
-introduced the stationary bootstrap (SB), which draws blocks of
-geometrically distributed random length and yields a resampled series
-that is itself stationary. A rigorous book-length account of the theory
-is <span class="citation" data-cites="lahiri2003resampling">Lahiri
-(2003)</span>, and <span class="citation"
-data-cites="lahiri1999theoretical">Lahiri (1999)</span> provides
+data-cites="kunsch1989jackknife">[9]</span> introduced the moving block
+bootstrap and established its consistency for general stationary
+observations; <span class="citation"
+data-cites="politis1992circular">[19]</span> proposed the circular block
+bootstrap (CBB), which wraps the sample on a circle to eliminate edge
+effects; and <span class="citation"
+data-cites="politis1994stationary">[20]</span> introduced the stationary
+bootstrap (SB), which draws blocks of geometrically distributed random
+length and yields a resampled series that is itself stationary. A
+rigorous book-length account of the theory is <span class="citation"
+data-cites="lahiri2003resampling">[11]</span>, and <span
+class="citation" data-cites="lahiri1999theoretical">[10]</span> provides
 higher-order comparisons of the main block schemes; a correction to
 those variance comparisons—showing the SB is less inefficient relative
 to fixed-block methods than previously believed—is given by <span
-class="citation" data-cites="nordman2009note">Nordman (2009)</span>. In
-practice the dominant tuning question is block length. <span
-class="citation" data-cites="hall1995blocking">Hall et al. (1995)</span>
-derived MSE-optimal block-length rates, showing the optimal length grows
-as a fractional power of the sample size <em>and depends on the target
-of inference</em>. <span class="citation"
-data-cites="politis2004automatic">Politis and White (2004)</span> turned
-this into an automatic, data-driven plug-in rule based on flat-top
-lag-window estimates of the spectral density at zero, applicable to both
-the SB and CBB; the published algorithm was subsequently corrected by
-<span class="citation" data-cites="patton2009correction">Patton et al.
-(2009)</span> in light of <span class="citation"
-data-cites="nordman2009note">Nordman (2009)</span>. Our study uses
-exactly this corrected automatic rule, alongside fixed block lengths, so
-that the best available off-the-shelf practice is represented
-fairly.</p>
+class="citation" data-cites="nordman2009note">[16]</span>. In practice
+the dominant tuning question is block length. <span class="citation"
+data-cites="hall1995blocking">[6]</span> derived MSE-optimal
+block-length rates, showing the optimal length grows as a fractional
+power of the sample size <em>and depends on the target of
+inference</em>. <span class="citation"
+data-cites="politis2004automatic">[21]</span> turned this into an
+automatic, data-driven plug-in rule based on flat-top lag-window
+estimates of the spectral density at zero, applicable to both the SB and
+CBB; the published algorithm was subsequently corrected by <span
+class="citation" data-cites="patton2009correction">[18]</span> in light
+of <span class="citation" data-cites="nordman2009note">[16]</span>. Our
+study uses exactly this corrected automatic rule, alongside fixed block
+lengths, so that the best available off-the-shelf practice is
+represented fairly.</p>
 <h4 id="inference-for-the-sharpe-ratio-and-maximum-drawdown.">Inference
 for the Sharpe ratio and maximum drawdown.</h4>
 <p>A parallel literature studies the sampling distribution of
 performance measures directly. <span class="citation"
-data-cites="jobson1981performance">Jobson and Korkie (1981)</span>
-derived the asymptotic distribution of Sharpe-ratio differences under
-iid normality, later corrected by <span class="citation"
-data-cites="memmel2003performance">Memmel (2003)</span>. <span
-class="citation" data-cites="lo2002statistics">Lo (2002)</span> is the
-standard practitioner reference: it gives closed-form asymptotic
-standard errors for the Sharpe ratio under iid returns and a GMM-based
-extension under serial correlation, and demonstrates that
-autocorrelation can distort annualized Sharpe ratios dramatically. <span
-class="citation" data-cites="opdyke2007comparing">Opdyke (2007)</span>
-extended the delta-method variance to general stationary-ergodic
-returns, accommodating skewness and kurtosis. Closest in spirit to our
-work, <span class="citation" data-cites="ledoit2008robust">Ledoit and
-Wolf (2008)</span> showed that classical Sharpe-ratio tests over-reject
-under heavy tails and time-series dependence and proposed a studentized
-circular block bootstrap test with markedly better size. Their evidence,
-however, concerns two-sample <em>tests</em> of Sharpe-ratio differences;
-the one-sample <em>coverage</em> question for confidence intervals
-reported on a single backtest is not addressed. For maximum drawdown,
-distributional theory is far thinner. <span class="citation"
-data-cites="magdonismail2004maximum">Magdon-Ismail et al. (2004)</span>
-derive the distribution and expectation of the maximum drawdown of a
-Brownian motion with drift, giving the standard analytic benchmark; but
-no usable finite-sample pivot exists for empirical strategy returns,
-which makes resampling the default tool—despite drawdown being an
-extreme, path-dependent functional for which naive iid resampling is
-even less plausibly adequate than for the Sharpe ratio.</p>
+data-cites="jobson1981performance">[8]</span> derived the asymptotic
+distribution of Sharpe-ratio differences under iid normality, later
+corrected by <span class="citation"
+data-cites="memmel2003performance">[15]</span>. <span class="citation"
+data-cites="lo2002statistics">[13]</span> is the standard practitioner
+reference: it gives closed-form asymptotic standard errors for the
+Sharpe ratio under iid returns and a GMM-based extension under serial
+correlation, and demonstrates that autocorrelation can distort
+annualized Sharpe ratios dramatically. <span class="citation"
+data-cites="opdyke2007comparing">[17]</span> extended the delta-method
+variance to general stationary-ergodic returns, accommodating skewness
+and kurtosis. Closest in spirit to our work, <span class="citation"
+data-cites="ledoit2008robust">[12]</span> showed that classical
+Sharpe-ratio tests over-reject under heavy tails and time-series
+dependence and proposed a studentized circular block bootstrap test with
+markedly better size. Their evidence, however, concerns two-sample
+<em>tests</em> of Sharpe-ratio differences; the one-sample
+<em>coverage</em> question for confidence intervals reported on a single
+backtest is not addressed. For maximum drawdown, distributional theory
+is far thinner. <span class="citation"
+data-cites="magdonismail2004maximum">[14]</span> derive the distribution
+and expectation of the maximum drawdown of a Brownian motion with drift,
+giving the standard analytic benchmark; but no usable finite-sample
+pivot exists for empirical strategy returns, which makes resampling the
+default tool—despite drawdown being an extreme, path-dependent
+functional for which naive iid resampling is even less plausibly
+adequate than for the Sharpe ratio.</p>
 <h4 id="backtest-evaluation-and-data-snooping.">Backtest evaluation and
 data snooping.</h4>
 <p>A related strand addresses selection effects in backtesting. <span
-class="citation" data-cites="white2000reality">White (2000)</span>
-introduced the Reality Check, itself built on the stationary bootstrap,
-for testing superior predictive ability across many strategies, and
-<span class="citation" data-cites="bailey2014deflated">Bailey and López
-de Prado (2014)</span> proposed the deflated Sharpe ratio to correct
-reported Sharpe ratios for multiple testing and non-normality. These
-contributions are orthogonal to ours: they ask whether a strategy
-selected from many is genuinely superior, whereas we ask whether the
-uncertainty interval attached to a <em>single, fixed</em> strategy’s
-reported statistic is even calibrated.</p>
+class="citation" data-cites="white2000reality">[22]</span> introduced
+the Reality Check, itself built on the stationary bootstrap, for testing
+superior predictive ability across many strategies, and <span
+class="citation" data-cites="bailey2014deflated">[2]</span> proposed the
+deflated Sharpe ratio to correct reported Sharpe ratios for multiple
+testing and non-normality. These contributions are orthogonal to ours:
+they ask whether a strategy selected from many is genuinely superior,
+whereas we ask whether the uncertainty interval attached to a
+<em>single, fixed</em> strategy’s reported statistic is even
+calibrated.</p>
 <h4 id="the-gap.">The gap.</h4>
 <p>The block-bootstrap theory above is mature, with consistency results,
 optimal block-length rates, and automatic selectors available for two
 decades. Yet, in our reading of it, applied trading writing
 predominantly resamples daily returns or individual trade PnLs iid—a
 practice popularized in evidence-based trading texts <span
-class="citation" data-cites="aronson2006evidence">(Aronson 2006)</span>
-and circulated in the author’s own practitioner writing. What is missing
-is a quantification of the <em>coverage cost</em> of that choice for the
+class="citation" data-cites="aronson2006evidence">[1]</span> and
+circulated in the author’s own practitioner writing. What is missing is
+a quantification of the <em>coverage cost</em> of that choice for the
 statistics practitioners actually report. <span class="citation"
-data-cites="ledoit2008robust">Ledoit and Wolf (2008)</span> measured the
-size of two-sample Sharpe tests; <span class="citation"
-data-cites="lo2002statistics">Lo (2002)</span> measured bias in
+data-cites="ledoit2008robust">[12]</span> measured the size of
+two-sample Sharpe tests; <span class="citation"
+data-cites="lo2002statistics">[13]</span> measured bias in
 annualization; nobody, to our knowledge, has measured the empirical
 coverage of one-sample confidence intervals for the Sharpe ratio and
 maximum drawdown across iid-return resampling, trade-level resampling,
 the SB and CBB with fixed and automatic block lengths <span
 class="citation"
-data-cites="politis2004automatic patton2009correction">(Politis and
-White 2004; Patton et al. 2009)</span>, and Lo’s analytic standard
-errors, in a controlled design where the truth is known. We close that
-gap using DGPs spanning the empirically relevant dependence structures:
-iid returns, AR(1) autocorrelation, GARCH(1,1) conditional
-heteroskedasticity <span class="citation"
-data-cites="bollerslev1986generalized">(Bollerslev 1986)</span>, and
-Markov regime switching <span class="citation"
-data-cites="hamilton1989new">(Hamilton 1989)</span>.</p>
+data-cites="politis2004automatic patton2009correction">[18, 21]</span>,
+and Lo’s analytic standard errors, in a controlled design where the
+truth is known. We close that gap using DGPs spanning the empirically
+relevant dependence structures: iid returns, AR(1) autocorrelation,
+GARCH(1,1) conditional heteroskedasticity <span class="citation"
+data-cites="bollerslev1986generalized">[3]</span>, and Markov regime
+switching <span class="citation"
+data-cites="hamilton1989new">[7]</span>.</p>
 <h1 id="sec:methods">Confidence-interval methods</h1>
 <p>All methods target the same parameter: the population annualized
 Sharpe ratio of the daily return stream, <span
@@ -239,8 +234,8 @@ replications and a seeded generator; all fourteen methods see the same
 simulated sample.</p>
 <h4 id="analytic-lo.">Analytic (Lo).</h4>
 <p>Under iid normal returns, <span class="citation"
-data-cites="lo2002statistics">Lo (2002)</span> gives the standard error
-of the daily Sharpe ratio <span class="math display">\begin{equation}
+data-cites="lo2002statistics">[13]</span> gives the standard error of
+the daily Sharpe ratio <span class="math display">\begin{equation}
 \widehat{\mathrm{SE}}_{\text{iid}}\big(\widehat\mathrm{SR}_d\big)
 \;=\; \sqrt{\tfrac{1}{T}\big(1 + \tfrac12
 \widehat\mathrm{SR}_d^{\,2}\big)},
@@ -267,8 +262,7 @@ class="math inline">[2\widehat\mathrm{SR}- q_{1-\alpha/2},\,
 2\widehat\mathrm{SR}- q_{\alpha/2}]</span>, and the <span
 class="sans-serif">BCa</span> interval with bias-correction <span
 class="math inline">z_0</span> and jackknife acceleration <span
-class="citation" data-cites="efron1993introduction">(Efron and
-Tibshirani 1993)</span>.</p>
+class="citation" data-cites="efron1993introduction">[5]</span>.</p>
 <h4 id="trade-level-iid-resampling.">Trade-level iid resampling.</h4>
 <p>The practitioner recipe under audit: segment the daily stream into
 “trades,” resample whole trades iid with replacement, concatenate the
@@ -293,16 +287,16 @@ matter in Section <a href="#sec:trade" data-reference-type="ref"
 data-reference="sec:trade">6.3</a>.</p>
 <h4 id="stationary-bootstrap.">Stationary bootstrap.</h4>
 <p>The SB of <span class="citation"
-data-cites="politis1994stationary">Politis and Romano (1994)</span>
-concatenates blocks whose start points are uniform on <span
+data-cites="politis1994stationary">[20]</span> concatenates blocks whose
+start points are uniform on <span
 class="math inline">\{1,\dots,T\}</span> and whose lengths are geometric
 with mean <span class="math inline">L</span>, wrapping circularly. We
 sweep <span class="math inline">L\in\{5,10,20,50\}</span> (<span
 class="sans-serif">SB <span class="math inline">L{=}\ell</span></span>)
 and additionally use the automatic block length of <span
-class="citation" data-cites="politis2004automatic">Politis and White
-(2004)</span> as corrected by <span class="citation"
-data-cites="patton2009correction">Patton et al. (2009)</span> (<span
+class="citation" data-cites="politis2004automatic">[21]</span> as
+corrected by <span class="citation"
+data-cites="patton2009correction">[18]</span> (<span
 class="sans-serif">SB auto</span>): with <span
 class="math inline">\hat\gamma_k</span> the sample autocovariances,
 <span class="math inline">\lambda(\cdot)</span> the trapezoidal taper,
@@ -318,8 +312,8 @@ T^{1/3}</span> with <span class="math inline">D_{\mathrm{SB}} = 2\bar
 g(0)^2</span>. Percentile intervals throughout.</p>
 <h4 id="circular-block-bootstrap.">Circular block bootstrap.</h4>
 <p>The CBB of <span class="citation"
-data-cites="politis1992circular">Politis and Romano (1992)</span> with
-fixed-length wrapped blocks of the corresponding automatic length (<span
+data-cites="politis1992circular">[19]</span> with fixed-length wrapped
+blocks of the corresponding automatic length (<span
 class="math inline">D_{\mathrm{CB}} = \tfrac43 \bar g(0)^2</span>);
 percentile intervals (<span class="sans-serif">CB auto</span>).</p>
 <h4 id="maximum-drawdown.">Maximum drawdown.</h4>
@@ -1200,9 +1194,8 @@ small-<span class="math inline">T</span> difficulty (below), and part is
 that the rule optimizes the block length for the long-run variance of
 the sample <em>mean</em>, not for quantiles of a studentized ratio
 statistic <span class="citation"
-data-cites="hall1995blocking politis2004automatic">(Hall et al. 1995;
-Politis and White 2004)</span>; its chosen lengths are, for this
-purpose, slightly short.</p>
+data-cites="hall1995blocking politis2004automatic">[6, 21]</span>; its
+chosen lengths are, for this purpose, slightly short.</p>
 <p>Two cross-method facts deserve emphasis. First, <em>at <span
 class="math inline">T=250</span> on the dependent families, no method
 reaches nominal <span class="math inline">90\%</span> coverage</em>: the
@@ -1508,21 +1501,20 @@ CUSUM threshold uses the full-sample standard deviation, as a
 practitioner would compute it. We evaluate percentile intervals for the
 block bootstraps as practitioners use them; studentized block intervals
 with higher-order refinements <span class="citation"
-data-cites="ledoit2008robust">(Ledoit and Wolf 2008)</span> could narrow
-the residual small-<span class="math inline">T</span> gap and are not
-tested. The Politis–White rule is applied as published (it optimizes the
-sample-mean long-run variance, not ratio-statistic quantiles). The
-drawdown truth is itself a <span
-class="math inline">20{,}000</span>-path Monte Carlo estimate (its
-quantile error is negligible relative to the reported effects, though it
-is shared within a cell and so does not average out across experiments),
-computed at one canonical parameter point per family and <span
-class="math inline">T\in\{250,1000\}</span> only. Finally, true Sharpe
-ratios are sampled from <span class="math inline">[0,2]</span> and all
-streams are univariate daily PnL: selection across many backtests <span
-class="citation" data-cites="white2000reality bailey2014deflated">(White
-2000; Bailey and López de Prado 2014)</span>, transaction costs, and
-multi-asset effects are out of scope.</p>
+data-cites="ledoit2008robust">[12]</span> could narrow the residual
+small-<span class="math inline">T</span> gap and are not tested. The
+Politis–White rule is applied as published (it optimizes the sample-mean
+long-run variance, not ratio-statistic quantiles). The drawdown truth is
+itself a <span class="math inline">20{,}000</span>-path Monte Carlo
+estimate (its quantile error is negligible relative to the reported
+effects, though it is shared within a cell and so does not average out
+across experiments), computed at one canonical parameter point per
+family and <span class="math inline">T\in\{250,1000\}</span> only.
+Finally, true Sharpe ratios are sampled from <span
+class="math inline">[0,2]</span> and all streams are univariate daily
+PnL: selection across many backtests <span class="citation"
+data-cites="white2000reality bailey2014deflated">[2, 22]</span>,
+transaction costs, and multi-asset effects are out of scope.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>We gave the “bootstrap your backtest” advice its first controlled
 coverage test, across fourteen interval methods, five data-generating
@@ -1563,137 +1555,160 @@ regenerates every figure, and the script
 this paper’s tables and text matches the generated results. The DGPs,
 interval constructors, drawdown truth cache, and analysis are released
 as an open-source package with tests.</p>
-<h1 id="references">References</h1><div id="refs" class="references csl-bib-body hanging-indent"
+<h1 id="references">References</h1><div id="refs" class="references csl-bib-body" data-entry-spacing="1"
 role="list">
 <div id="ref-aronson2006evidence" class="csl-entry" role="listitem">
-Aronson, David R. 2006. <em>Evidence-Based Technical Analysis: Applying
-the Scientific Method and Statistical Inference to Trading Signals</em>.
-John Wiley &amp; Sons. <a
-href="https://doi.org/10.1002/9781118268315">https://doi.org/10.1002/9781118268315</a>.
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">David R. Aronson. <em>Evidence-based technical
+analysis: Applying the scientific method and statistical inference to
+trading signals</em>. John Wiley &amp; Sons, 2006. doi: <a
+href="https://doi.org/10.1002/9781118268315">10.1002/9781118268315</a>.</div>
 </div>
 <div id="ref-bailey2014deflated" class="csl-entry" role="listitem">
-Bailey, David H., and Marcos López de Prado. 2014. <span>“The Deflated
-<span>S</span>harpe Ratio: Correcting for Selection Bias, Backtest
-Overfitting, and Non-Normality.”</span> <em>The Journal of Portfolio
-Management</em> 40 (5): 94–107. <a
-href="https://jpm.pm-research.com/content/40/5/94">https://jpm.pm-research.com/content/40/5/94</a>.
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline">David H. Bailey and Marcos López de Prado. <a
+href="https://jpm.pm-research.com/content/40/5/94">The deflated
+<span>S</span>harpe ratio: Correcting for selection bias, backtest
+overfitting, and non-normality</a>. <em>The Journal of Portfolio
+Management</em>, 40(5):94–107, 2014.</div>
 </div>
 <div id="ref-bollerslev1986generalized" class="csl-entry"
 role="listitem">
-Bollerslev, Tim. 1986. <span>“Generalized Autoregressive Conditional
-Heteroskedasticity.”</span> <em>Journal of Econometrics</em> 31 (3):
-307–27. <a
-href="https://doi.org/10.1016/0304-4076(86)90063-1">https://doi.org/10.1016/0304-4076(86)90063-1</a>.
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">Tim
+Bollerslev. Generalized autoregressive conditional heteroskedasticity.
+<em>Journal of Econometrics</em>, 31(3):307–327, 1986. doi: <a
+href="https://doi.org/10.1016/0304-4076(86)90063-1">10.1016/0304-4076(86)90063-1</a>.</div>
 </div>
 <div id="ref-efron1979bootstrap" class="csl-entry" role="listitem">
-Efron, Bradley. 1979. <span>“Bootstrap Methods: Another Look at the
-Jackknife.”</span> <em>The Annals of Statistics</em> 7 (1): 1–26. <a
-href="https://doi.org/10.1214/aos/1176344552">https://doi.org/10.1214/aos/1176344552</a>.
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline">Bradley Efron. Bootstrap methods: Another look
+at the jackknife. <em>The Annals of Statistics</em>, 7(1):1–26, 1979.
+doi: <a
+href="https://doi.org/10.1214/aos/1176344552">10.1214/aos/1176344552</a>.</div>
 </div>
 <div id="ref-efron1993introduction" class="csl-entry" role="listitem">
-Efron, Bradley, and Robert J. Tibshirani. 1993. <em>An Introduction to
-the Bootstrap</em>. Monographs on Statistics and Applied Probability 57.
-Chapman &amp; Hall.
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline">Bradley Efron and Robert J. Tibshirani. <em>An
+introduction to the bootstrap</em>. Chapman &amp; Hall, 1993.</div>
 </div>
 <div id="ref-hall1995blocking" class="csl-entry" role="listitem">
-Hall, Peter, Joel L. Horowitz, and Bing-Yi Jing. 1995. <span>“On
-Blocking Rules for the Bootstrap with Dependent Data.”</span>
-<em>Biometrika</em> 82 (3): 561–74. <a
-href="https://doi.org/10.1093/biomet/82.3.561">https://doi.org/10.1093/biomet/82.3.561</a>.
+<div class="csl-left-margin">[6] </div><div
+class="csl-right-inline">Peter Hall, Joel L. Horowitz, and Bing-Yi Jing.
+On blocking rules for the bootstrap with dependent data.
+<em>Biometrika</em>, 82(3):561–574, 1995. doi: <a
+href="https://doi.org/10.1093/biomet/82.3.561">10.1093/biomet/82.3.561</a>.</div>
 </div>
 <div id="ref-hamilton1989new" class="csl-entry" role="listitem">
-Hamilton, James D. 1989. <span>“A New Approach to the Economic Analysis
-of Nonstationary Time Series and the Business Cycle.”</span>
-<em>Econometrica</em> 57 (2): 357–84. <a
-href="https://doi.org/10.2307/1912559">https://doi.org/10.2307/1912559</a>.
+<div class="csl-left-margin">[7] </div><div
+class="csl-right-inline">James D. Hamilton. A new approach to the
+economic analysis of nonstationary time series and the business cycle.
+<em>Econometrica</em>, 57(2):357–384, 1989. doi: <a
+href="https://doi.org/10.2307/1912559">10.2307/1912559</a>.</div>
 </div>
 <div id="ref-jobson1981performance" class="csl-entry" role="listitem">
-Jobson, J. D., and Bob M. Korkie. 1981. <span>“Performance Hypothesis
-Testing with the <span>S</span>harpe and <span>T</span>reynor
-Measures.”</span> <em>The Journal of Finance</em> 36 (4): 889–908. <a
-href="https://doi.org/10.1111/j.1540-6261.1981.tb04891.x">https://doi.org/10.1111/j.1540-6261.1981.tb04891.x</a>.
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J.
+D. Jobson and Bob M. Korkie. Performance hypothesis testing with the
+<span>S</span>harpe and <span>T</span>reynor measures. <em>The Journal
+of Finance</em>, 36(4):889–908, 1981. doi: <a
+href="https://doi.org/10.1111/j.1540-6261.1981.tb04891.x">10.1111/j.1540-6261.1981.tb04891.x</a>.</div>
 </div>
 <div id="ref-kunsch1989jackknife" class="csl-entry" role="listitem">
-Künsch, Hans R. 1989. <span>“The Jackknife and the Bootstrap for General
-Stationary Observations.”</span> <em>The Annals of Statistics</em> 17
-(3): 1217–41. <a
-href="https://doi.org/10.1214/aos/1176347265">https://doi.org/10.1214/aos/1176347265</a>.
+<div class="csl-left-margin">[9] </div><div
+class="csl-right-inline">Hans R. Künsch. The jackknife and the bootstrap
+for general stationary observations. <em>The Annals of Statistics</em>,
+17(3):1217–1241, 1989. doi: <a
+href="https://doi.org/10.1214/aos/1176347265">10.1214/aos/1176347265</a>.</div>
 </div>
 <div id="ref-lahiri1999theoretical" class="csl-entry" role="listitem">
-Lahiri, Soumendra N. 1999. <span>“Theoretical Comparisons of Block
-Bootstrap Methods.”</span> <em>The Annals of Statistics</em> 27 (1):
-386–404. <a
-href="https://doi.org/10.1214/aos/1018031117">https://doi.org/10.1214/aos/1018031117</a>.
+<div class="csl-left-margin">[10] </div><div
+class="csl-right-inline">Soumendra N. Lahiri. Theoretical comparisons of
+block bootstrap methods. <em>The Annals of Statistics</em>,
+27(1):386–404, 1999. doi: <a
+href="https://doi.org/10.1214/aos/1018031117">10.1214/aos/1018031117</a>.</div>
 </div>
 <div id="ref-lahiri2003resampling" class="csl-entry" role="listitem">
-Lahiri, Soumendra N. 2003. <em>Resampling Methods for Dependent
-Data</em>. Springer Series in Statistics. Springer. <a
-href="https://doi.org/10.1007/978-1-4757-3803-2">https://doi.org/10.1007/978-1-4757-3803-2</a>.
+<div class="csl-left-margin">[11] </div><div
+class="csl-right-inline">Soumendra N. Lahiri. <em>Resampling methods for
+dependent data</em>. Springer, 2003. doi: <a
+href="https://doi.org/10.1007/978-1-4757-3803-2">10.1007/978-1-4757-3803-2</a>.</div>
 </div>
 <div id="ref-ledoit2008robust" class="csl-entry" role="listitem">
-Ledoit, Olivier, and Michael Wolf. 2008. <span>“Robust Performance
-Hypothesis Testing with the <span>S</span>harpe Ratio.”</span>
-<em>Journal of Empirical Finance</em> 15 (5): 850–59. <a
-href="https://doi.org/10.1016/j.jempfin.2008.03.002">https://doi.org/10.1016/j.jempfin.2008.03.002</a>.
+<div class="csl-left-margin">[12] </div><div
+class="csl-right-inline">Olivier Ledoit and Michael Wolf. Robust
+performance hypothesis testing with the <span>S</span>harpe ratio.
+<em>Journal of Empirical Finance</em>, 15(5):850–859, 2008. doi: <a
+href="https://doi.org/10.1016/j.jempfin.2008.03.002">10.1016/j.jempfin.2008.03.002</a>.</div>
 </div>
 <div id="ref-lo2002statistics" class="csl-entry" role="listitem">
-Lo, Andrew W. 2002. <span>“The Statistics of <span>S</span>harpe
-Ratios.”</span> <em>Financial Analysts Journal</em> 58 (4): 36–52. <a
-href="https://doi.org/10.2469/faj.v58.n4.2453">https://doi.org/10.2469/faj.v58.n4.2453</a>.
+<div class="csl-left-margin">[13] </div><div
+class="csl-right-inline">Andrew W. Lo. The statistics of
+<span>S</span>harpe ratios. <em>Financial Analysts Journal</em>,
+58(4):36–52, 2002. doi: <a
+href="https://doi.org/10.2469/faj.v58.n4.2453">10.2469/faj.v58.n4.2453</a>.</div>
 </div>
 <div id="ref-magdonismail2004maximum" class="csl-entry" role="listitem">
-Magdon-Ismail, Malik, Amir F. Atiya, Amrit Pratap, and Yaser S.
-Abu-Mostafa. 2004. <span>“On the Maximum Drawdown of a
-<span>B</span>rownian Motion.”</span> <em>Journal of Applied
-Probability</em> 41 (1): 147–61. <a
-href="https://doi.org/10.1239/jap/1077134674">https://doi.org/10.1239/jap/1077134674</a>.
+<div class="csl-left-margin">[14] </div><div
+class="csl-right-inline">Malik Magdon-Ismail, Amir F. Atiya, Amrit
+Pratap, and Yaser S. Abu-Mostafa. On the maximum drawdown of a
+<span>B</span>rownian motion. <em>Journal of Applied Probability</em>,
+41(1):147–161, 2004. doi: <a
+href="https://doi.org/10.1239/jap/1077134674">10.1239/jap/1077134674</a>.</div>
 </div>
 <div id="ref-memmel2003performance" class="csl-entry" role="listitem">
-Memmel, Christoph. 2003. <span>“Performance Hypothesis Testing with the
-<span>S</span>harpe Ratio.”</span> <em>Finance Letters</em> 1 (1):
-21–23.
+<div class="csl-left-margin">[15] </div><div
+class="csl-right-inline">Christoph Memmel. Performance hypothesis
+testing with the <span>S</span>harpe ratio. <em>Finance Letters</em>,
+1(1):21–23, 2003. Journal now defunct; entry follows the citation used
+by Ledoit and Wolf (2008). See also SSRN abstract 412588.</div>
 </div>
 <div id="ref-nordman2009note" class="csl-entry" role="listitem">
-Nordman, Daniel J. 2009. <span>“A Note on the Stationary Bootstrap’s
-Variance.”</span> <em>The Annals of Statistics</em> 37 (1): 359–70. <a
-href="https://doi.org/10.1214/07-AOS567">https://doi.org/10.1214/07-AOS567</a>.
+<div class="csl-left-margin">[16] </div><div
+class="csl-right-inline">Daniel J. Nordman. A note on the stationary
+bootstrap’s variance. <em>The Annals of Statistics</em>, 37(1):359–370,
+2009. doi: <a
+href="https://doi.org/10.1214/07-AOS567">10.1214/07-AOS567</a>.</div>
 </div>
 <div id="ref-opdyke2007comparing" class="csl-entry" role="listitem">
-Opdyke, John Douglas. 2007. <span>“Comparing <span>S</span>harpe Ratios:
-So Where Are the p-Values?”</span> <em>Journal of Asset Management</em>
-8 (5): 308–36. <a
-href="https://doi.org/10.1057/palgrave.jam.2250084">https://doi.org/10.1057/palgrave.jam.2250084</a>.
+<div class="csl-left-margin">[17] </div><div
+class="csl-right-inline">John Douglas Opdyke. Comparing
+<span>S</span>harpe ratios: So where are the p-values? <em>Journal of
+Asset Management</em>, 8(5):308–336, 2007. doi: <a
+href="https://doi.org/10.1057/palgrave.jam.2250084">10.1057/palgrave.jam.2250084</a>.</div>
 </div>
 <div id="ref-patton2009correction" class="csl-entry" role="listitem">
-Patton, Andrew, Dimitris N. Politis, and Halbert White. 2009.
-<span>“Correction to <span>‘<span>A</span>utomatic Block-Length
-Selection for the Dependent Bootstrap’</span> by <span>D</span>.
-<span>P</span>olitis and <span>H</span>. <span>W</span>hite.”</span>
-<em>Econometric Reviews</em> 28 (4): 372–75. <a
-href="https://doi.org/10.1080/07474930802459016">https://doi.org/10.1080/07474930802459016</a>.
+<div class="csl-left-margin">[18] </div><div
+class="csl-right-inline">Andrew Patton, Dimitris N. Politis, and Halbert
+White. Correction to <span>“<span>A</span>utomatic block-length
+selection for the dependent bootstrap”</span> by <span>D</span>.
+<span>P</span>olitis and <span>H</span>. <span>W</span>hite.
+<em>Econometric Reviews</em>, 28(4):372–375, 2009. doi: <a
+href="https://doi.org/10.1080/07474930802459016">10.1080/07474930802459016</a>.</div>
 </div>
 <div id="ref-politis1992circular" class="csl-entry" role="listitem">
-Politis, Dimitris N., and Joseph P. Romano. 1992. <span>“A Circular
-Block-Resampling Procedure for Stationary Data.”</span> In <em>Exploring
-the Limits of Bootstrap</em>, edited by Raoul LePage and Lynne Billard.
-Wiley.
+<div class="csl-left-margin">[19] </div><div
+class="csl-right-inline">Dimitris N. Politis and Joseph P. Romano. A
+circular block-resampling procedure for stationary data. In
+<em>Exploring the limits of bootstrap</em>, pages 263–270, 1992.</div>
 </div>
 <div id="ref-politis1994stationary" class="csl-entry" role="listitem">
-Politis, Dimitris N., and Joseph P. Romano. 1994. <span>“The Stationary
-Bootstrap.”</span> <em>Journal of the American Statistical
-Association</em> 89 (428): 1303–13. <a
-href="https://doi.org/10.1080/01621459.1994.10476870">https://doi.org/10.1080/01621459.1994.10476870</a>.
+<div class="csl-left-margin">[20] </div><div
+class="csl-right-inline">Dimitris N. Politis and Joseph P. Romano. The
+stationary bootstrap. <em>Journal of the American Statistical
+Association</em>, 89(428):1303–1313, 1994. doi: <a
+href="https://doi.org/10.1080/01621459.1994.10476870">10.1080/01621459.1994.10476870</a>.</div>
 </div>
 <div id="ref-politis2004automatic" class="csl-entry" role="listitem">
-Politis, Dimitris N., and Halbert White. 2004. <span>“Automatic
-Block-Length Selection for the Dependent Bootstrap.”</span>
-<em>Econometric Reviews</em> 23 (1): 53–70. <a
-href="https://doi.org/10.1081/ETC-120028836">https://doi.org/10.1081/ETC-120028836</a>.
+<div class="csl-left-margin">[21] </div><div
+class="csl-right-inline">Dimitris N. Politis and Halbert White.
+Automatic block-length selection for the dependent bootstrap.
+<em>Econometric Reviews</em>, 23(1):53–70, 2004. doi: <a
+href="https://doi.org/10.1081/ETC-120028836">10.1081/ETC-120028836</a>.</div>
 </div>
 <div id="ref-white2000reality" class="csl-entry" role="listitem">
-White, Halbert. 2000. <span>“A Reality Check for Data Snooping.”</span>
-<em>Econometrica</em> 68 (5): 1097–126. <a
-href="https://doi.org/10.1111/1468-0262.00152">https://doi.org/10.1111/1468-0262.00152</a>.
+<div class="csl-left-margin">[22] </div><div
+class="csl-right-inline">Halbert White. A reality check for data
+snooping. <em>Econometrica</em>, 68(5):1097–1126, 2000. doi: <a
+href="https://doi.org/10.1111/1468-0262.00152">10.1111/1468-0262.00152</a>.</div>
 </div>
 </div>
 <section id="footnotes" class="footnotes footnotes-end-of-document"
