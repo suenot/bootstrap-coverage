@@ -1,0 +1,50 @@
+<p>Practitioners are widely advised to attach uncertainty to a backtest
+by resampling its daily returns or its trades with replacement and
+reading confidence intervals off the bootstrap distribution. We give
+this advice a controlled coverage test. Five return-generating processes
+with <em>exactly</em> known annualized Sharpe ratios—iid Gaussian, iid
+Student-<span class="math inline">t</span>, AR(1), GARCH(1,1), and
+Markov regime-switching volatility—are simulated at <span
+class="math inline">T\in\{250,1000,4000\}</span> days, and fourteen
+interval methods (Lo’s iid and HAC-adjusted standard errors; iid
+percentile, basic, and BCa bootstraps; trade-level resampling with fixed
+and threshold-crossing episodes; stationary and circular block
+bootstraps with swept and automatically selected block lengths) are
+scored on <span class="math inline">6{,}000</span> experiments at <span
+class="math inline">90\%</span> and <span
+class="math inline">95\%</span> nominal. The verdict splits four ways.
+Where returns are truly iid the advice is sound: pooled over <span
+class="math inline">2{,}400</span> iid experiments the percentile
+bootstrap covers <span class="math inline">0.954</span> <span
+class="math inline">[0.945,0.961]</span> at <span
+class="math inline">95\%</span> nominal, heavy tails down to <span
+class="math inline">\nu=5</span> included. Under autocorrelation it
+breaks, and not as a small-sample effect: at AR(1) <span
+class="math inline">\phi=0.3</span> the per-bar iid bootstrap covers
+<span class="math inline">0.841</span> at <span
+class="math inline">95\%</span> nominal—a nominal <span
+class="math inline">5\%</span> miss rate that is really <span
+class="math inline">16\%</span>—converges with sample size to a
+non-nominal limit (<span class="math inline">0.812\to0.854</span> from
+<span class="math inline">T=250</span> to <span
+class="math inline">4000</span>, against an analytic asymptote of <span
+class="math inline">0.850</span>), and is not rescued by the BCa
+construction (<span class="math inline">0.838</span>): the failure is
+the resampling scheme, not the interval formula. Resampling whole
+multi-day <em>trades</em> turns out to be an accidental non-overlapping
+block bootstrap and is calibrated at the same <span
+class="math inline">\phi=0.3</span> (<span
+class="math inline">0.946</span>) so long as the trade unit exceeds the
+dependence length; volatility dynamics alone (GARCH, regimes) barely
+hurt Sharpe coverage. For maximum drawdown the news is uniformly bad:
+the bootstrap “<span class="math inline">5\%</span> worst-case” drawdown
+quantile is optimistic everywhere—its realized exceedance probability is
+<span class="math inline">0.08</span>–<span
+class="math inline">0.10</span> even on iid Gaussian returns, <span
+class="math inline">0.13</span>–<span class="math inline">0.17</span>
+under regime volatility, and <span class="math inline">0.23</span> under
+AR(1) at both path lengths; block methods repair only the
+autocorrelation channel. Practical recipe: never resample dependent PnL
+per bar; default to an automatic-block-length block bootstrap or Lo’s
+HAC standard error; treat bootstrap drawdown quantiles as lower
+bounds.</p>
