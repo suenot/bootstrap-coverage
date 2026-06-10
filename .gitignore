@@ -12,3 +12,5 @@ paper/main.log
 paper/main.out
 paper/main.blg
 .DS_Store
+arxiv_submission/
+arxiv_submission.tar.gz
