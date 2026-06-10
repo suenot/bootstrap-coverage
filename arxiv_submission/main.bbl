@@ -1,0 +1,162 @@
+\begin{thebibliography}{22}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Aronson(2006)]{aronson2006evidence}
+David~R. Aronson.
+\newblock \emph{Evidence-Based Technical Analysis: Applying the Scientific
+  Method and Statistical Inference to Trading Signals}.
+\newblock John Wiley \& Sons, Hoboken, NJ, 2006.
+\newblock ISBN 978-0-470-00874-4.
+\newblock \doi{10.1002/9781118268315}.
+
+\bibitem[Bailey and L{\'o}pez~de Prado(2014)]{bailey2014deflated}
+David~H. Bailey and Marcos L{\'o}pez~de Prado.
+\newblock The deflated {S}harpe ratio: Correcting for selection bias, backtest
+  overfitting, and non-normality.
+\newblock \emph{The Journal of Portfolio Management}, 40\penalty0 (5):\penalty0
+  94--107, 2014.
+\newblock URL \url{https://jpm.pm-research.com/content/40/5/94}.
+
+\bibitem[Bollerslev(1986)]{bollerslev1986generalized}
+Tim Bollerslev.
+\newblock Generalized autoregressive conditional heteroskedasticity.
+\newblock \emph{Journal of Econometrics}, 31\penalty0 (3):\penalty0 307--327,
+  1986.
+\newblock \doi{10.1016/0304-4076(86)90063-1}.
+
+\bibitem[Efron(1979)]{efron1979bootstrap}
+Bradley Efron.
+\newblock Bootstrap methods: Another look at the jackknife.
+\newblock \emph{The Annals of Statistics}, 7\penalty0 (1):\penalty0 1--26,
+  1979.
+\newblock \doi{10.1214/aos/1176344552}.
+
+\bibitem[Efron and Tibshirani(1993)]{efron1993introduction}
+Bradley Efron and Robert~J. Tibshirani.
+\newblock \emph{An Introduction to the Bootstrap}.
+\newblock Number~57 in Monographs on Statistics and Applied Probability.
+  Chapman \& Hall, New York, 1993.
+\newblock ISBN 978-0-412-04231-7.
+
+\bibitem[Hall et~al.(1995)Hall, Horowitz, and Jing]{hall1995blocking}
+Peter Hall, Joel~L. Horowitz, and Bing-Yi Jing.
+\newblock On blocking rules for the bootstrap with dependent data.
+\newblock \emph{Biometrika}, 82\penalty0 (3):\penalty0 561--574, 1995.
+\newblock \doi{10.1093/biomet/82.3.561}.
+
+\bibitem[Hamilton(1989)]{hamilton1989new}
+James~D. Hamilton.
+\newblock A new approach to the economic analysis of nonstationary time series
+  and the business cycle.
+\newblock \emph{Econometrica}, 57\penalty0 (2):\penalty0 357--384, 1989.
+\newblock \doi{10.2307/1912559}.
+
+\bibitem[Jobson and Korkie(1981)]{jobson1981performance}
+J.~D. Jobson and Bob~M. Korkie.
+\newblock Performance hypothesis testing with the {S}harpe and {T}reynor
+  measures.
+\newblock \emph{The Journal of Finance}, 36\penalty0 (4):\penalty0 889--908,
+  1981.
+\newblock \doi{10.1111/j.1540-6261.1981.tb04891.x}.
+
+\bibitem[K{\"u}nsch(1989)]{kunsch1989jackknife}
+Hans~R. K{\"u}nsch.
+\newblock The jackknife and the bootstrap for general stationary observations.
+\newblock \emph{The Annals of Statistics}, 17\penalty0 (3):\penalty0
+  1217--1241, 1989.
+\newblock \doi{10.1214/aos/1176347265}.
+
+\bibitem[Lahiri(1999)]{lahiri1999theoretical}
+Soumendra~N. Lahiri.
+\newblock Theoretical comparisons of block bootstrap methods.
+\newblock \emph{The Annals of Statistics}, 27\penalty0 (1):\penalty0 386--404,
+  1999.
+\newblock \doi{10.1214/aos/1018031117}.
+
+\bibitem[Lahiri(2003)]{lahiri2003resampling}
+Soumendra~N. Lahiri.
+\newblock \emph{Resampling Methods for Dependent Data}.
+\newblock Springer Series in Statistics. Springer, New York, 2003.
+\newblock ISBN 978-0-387-00928-5.
+\newblock \doi{10.1007/978-1-4757-3803-2}.
+
+\bibitem[Ledoit and Wolf(2008)]{ledoit2008robust}
+Olivier Ledoit and Michael Wolf.
+\newblock Robust performance hypothesis testing with the {S}harpe ratio.
+\newblock \emph{Journal of Empirical Finance}, 15\penalty0 (5):\penalty0
+  850--859, 2008.
+\newblock \doi{10.1016/j.jempfin.2008.03.002}.
+
+\bibitem[Lo(2002)]{lo2002statistics}
+Andrew~W. Lo.
+\newblock The statistics of {S}harpe ratios.
+\newblock \emph{Financial Analysts Journal}, 58\penalty0 (4):\penalty0 36--52,
+  2002.
+\newblock \doi{10.2469/faj.v58.n4.2453}.
+
+\bibitem[Magdon-Ismail et~al.(2004)Magdon-Ismail, Atiya, Pratap, and
+  Abu-Mostafa]{magdonismail2004maximum}
+Malik Magdon-Ismail, Amir~F. Atiya, Amrit Pratap, and Yaser~S. Abu-Mostafa.
+\newblock On the maximum drawdown of a {B}rownian motion.
+\newblock \emph{Journal of Applied Probability}, 41\penalty0 (1):\penalty0
+  147--161, 2004.
+\newblock \doi{10.1239/jap/1077134674}.
+
+\bibitem[Memmel(2003)]{memmel2003performance}
+Christoph Memmel.
+\newblock Performance hypothesis testing with the {S}harpe ratio.
+\newblock \emph{Finance Letters}, 1\penalty0 (1):\penalty0 21--23, 2003.
+\newblock Journal now defunct; entry follows the citation used by Ledoit and
+  Wolf (2008). See also SSRN abstract 412588.
+
+\bibitem[Nordman(2009)]{nordman2009note}
+Daniel~J. Nordman.
+\newblock A note on the stationary bootstrap's variance.
+\newblock \emph{The Annals of Statistics}, 37\penalty0 (1):\penalty0 359--370,
+  2009.
+\newblock \doi{10.1214/07-AOS567}.
+
+\bibitem[Opdyke(2007)]{opdyke2007comparing}
+John~Douglas Opdyke.
+\newblock Comparing {S}harpe ratios: So where are the p-values?
+\newblock \emph{Journal of Asset Management}, 8\penalty0 (5):\penalty0
+  308--336, 2007.
+\newblock \doi{10.1057/palgrave.jam.2250084}.
+
+\bibitem[Patton et~al.(2009)Patton, Politis, and White]{patton2009correction}
+Andrew Patton, Dimitris~N. Politis, and Halbert White.
+\newblock Correction to ``{A}utomatic block-length selection for the dependent
+  bootstrap'' by {D}. {P}olitis and {H}. {W}hite.
+\newblock \emph{Econometric Reviews}, 28\penalty0 (4):\penalty0 372--375, 2009.
+\newblock \doi{10.1080/07474930802459016}.
+
+\bibitem[Politis and Romano(1992)]{politis1992circular}
+Dimitris~N. Politis and Joseph~P. Romano.
+\newblock A circular block-resampling procedure for stationary data.
+\newblock In Raoul LePage and Lynne Billard, editors, \emph{Exploring the
+  Limits of Bootstrap}, pages 263--270. Wiley, New York, 1992.
+
+\bibitem[Politis and Romano(1994)]{politis1994stationary}
+Dimitris~N. Politis and Joseph~P. Romano.
+\newblock The stationary bootstrap.
+\newblock \emph{Journal of the American Statistical Association}, 89\penalty0
+  (428):\penalty0 1303--1313, 1994.
+\newblock \doi{10.1080/01621459.1994.10476870}.
+
+\bibitem[Politis and White(2004)]{politis2004automatic}
+Dimitris~N. Politis and Halbert White.
+\newblock Automatic block-length selection for the dependent bootstrap.
+\newblock \emph{Econometric Reviews}, 23\penalty0 (1):\penalty0 53--70, 2004.
+\newblock \doi{10.1081/ETC-120028836}.
+
+\bibitem[White(2000)]{white2000reality}
+Halbert White.
+\newblock A reality check for data snooping.
+\newblock \emph{Econometrica}, 68\penalty0 (5):\penalty0 1097--1126, 2000.
+\newblock \doi{10.1111/1468-0262.00152}.
+
+\end{thebibliography}
